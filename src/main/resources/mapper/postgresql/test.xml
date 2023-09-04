@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dev.example.devdemo.mapper.TestMapper">
+
+    <select id="getAll" resultType="com.dev.example.devdemo.dto.UserDto">
+        select * from "oc.user_information_t"
+    </select>
+
+    <select id="user_info" resultType="com.dev.example.devdemo.dto.UserDto">
+        SELECT
+        staff_email,
+        staff_kor_name,
+        staff_eng_name,
+        department_id,
+        default_role_name
+        FROM "oc.user_information_t"
+        ORDER BY staff_kor_name
+    </select>
+
+    <select id="role_info" resultType="com.dev.example.devdemo.dto.RoleDto">
+        SELECT DISTINCT role_name
+        FROM "oc.role_permission_t"
+        ORDER BY role_name
+    </select>
+
+    <select id="role_detail" resultType="com.dev.example.devdemo.dto.RoleDto">
+        SELECT role_name
+        FROM "oc.user_role_t"
+        WHERE staff_email = #{staff_email}
+    </select>
+
+    <insert id="create_user">
+        INSERT INTO public."oc.user_information_t"(
+        staff_email, staff_kor_name, staff_eng_name, department_id, default_role_name)
+        VALUES (#{staff_email}, #{staff_kor_name}, #{staff_eng_name}, #{department_id}, #{default_role_name});
+    </insert>
+
+</mapper>

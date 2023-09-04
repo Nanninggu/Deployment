@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dev.example.devdemo.mapper.TestMapper">
+
+    <select id="check_value" resultType="com.dev.example.devdemo.dto.UserDto" fetchSize="250">
+        SELECT
+        staff_email,
+        staff_kor_name,
+        staff_eng_name,
+        department_id,
+        default_role_name
+        FROM "oc.user_information_t"
+        WHERE 1=1
+        AND department_id = #{department_id}
+        ORDER BY staff_kor_name
+    </select>
+
+    <select id="Check_staff_email" resultType="com.dev.example.devdemo.dto.UserDto" fetchSize="250">
+        SELECT
+        staff_email,
+        staff_kor_name,
+        staff_eng_name,
+        department_id,
+        default_role_name
+        FROM "oc.user_information_t"
+        WHERE 1=1
+        AND staff_email = #{staff_email}
+        ORDER BY staff_kor_name
+    </select>
+
+    <select id="Check_others" resultType="com.dev.example.devdemo.dto.UserDto" fetchSize="250">
+        SELECT
+        staff_email,
+        staff_kor_name,
+        staff_eng_name,
+        department_id,
+        default_role_name
+        FROM "oc.user_information_t"
+        WHERE 1=1
+        AND (staff_kor_name = #{staff_kor_name} OR staff_eng_name = #{staff_eng_name})
+        ORDER BY staff_kor_name
+    </select>
+
+</mapper>

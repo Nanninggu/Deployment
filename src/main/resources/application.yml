@@ -1,0 +1,25 @@
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+    static-path-pattern: /resources/**
+  #DB 설정
+  datasource:
+    #    url: jdbc:postgresql://127.0.0.1:5432/test_02
+    #   writer
+    url: jdbc:postgresql://ke-test-db-dev.cluster-cwt0xlqwsn2i.ap-northeast-2.rds.amazonaws.com/ke_dev
+    #   reader
+    #    url: jdbc:postgresql://ke-test-db-dev.cluster-ro-cwt0xlqwsn2i.ap-northeast-2.rds.amazonaws.com/ke_dev
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: test1234
+  #JSP 바로적용 설정
+  devtools:
+    livereload:
+      enabled: true
+#로그 레벨
+logging:
+  level:
+    # 쿼리 보기
+    com.penthegom.example.penthegomdemo: DEBUG

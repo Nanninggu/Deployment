@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dev.example.devdemo.mapper.RoleMapper">
+
+    <select id="adminRole" resultType="com.dev.example.devdemo.dto.RoleDto" fetchSize="250">
+        SELECT DISTINCT role_name, menu_id, read_yn, write_yn
+        FROM "oc.role_permission_t"
+        WHERE role_name = (SELECT role_name
+        FROM "oc.user_role_t"
+        WHERE staff_email = #{staff_email})
+        ORDER BY role_name
+    </select>
+
+    <!--    <update id="adminRole">-->
+    <!--        UPDATE public."oc.user_information_t"-->
+    <!--        SET staff_email=?, staff_kor_name=?, staff_eng_name=?, department_id=?, default_role_name=?-->
+    <!--        WHERE staff_email = #{staff_email}-->
+    <!--    </update>-->
+
+    <update id="updateRole">
+        UPDATE public.#{database}
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="staff_kor_name != null">
+                staff_kor_name = #{staff_kor_name} ,
+            </if>
+            <if test="staff_eng_name != null">
+                staff_eng_name = #{staff_eng_name} ,
+            </if>
+            <if test="department_id != null">
+                department_id = #{department_id} ,
+            </if>
+            <if test="default_role_name != null">
+                default_role_name = #{default_role_name}
+            </if>
+        </trim>
+        WHERE staff_email = #{staff_email}
+    </update>
+
+    <delete id="deleteRole">
+        DELETE FROM public."oc.user_role_t"
+        WHERE staff_email = #{staff_email};
+    </delete>
+
+    <insert id="insertrole">
+        INSERT INTO public."oc.user_role_t"(
+        role_name, staff_email)
+        VALUES (#{role_name}, #{staff_email});
+    </insert>
+
+</mapper>
