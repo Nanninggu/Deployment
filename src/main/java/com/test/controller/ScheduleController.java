@@ -2,6 +2,7 @@ package com.test.controller;
 
 import com.test.dto.ScheduleDto;
 import com.test.mapper.ScheduleMapper;
+import jdk.jfr.Description;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -18,6 +19,7 @@ public class ScheduleController {
     @Autowired
     private ScheduleMapper scheduleMapper;
 
+    @Description("배치 컨트롤러")
     @Scheduled(cron = "* * * * * *", zone = "Asia/Seoul")
     @PostMapping("/insert")
     public void scheduledInsert() throws Exception {
