@@ -1,45 +1,50 @@
 plugins {
-	id 'java'
-	id 'org.springframework.boot' version '2.7.14'
-	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+    id 'java'
+    id 'org.springframework.boot' version '2.7.14'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 }
 
 configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
 }
 
 group = 'com.dev.example'
 version = '0.0.1-SNAPSHOT'
 
 java {
-	sourceCompatibility = '17'
+    sourceCompatibility = '17'
 }
 
 repositories {
-	mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.1'
-	runtimeOnly 'org.postgresql:postgresql'
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-	testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.3.1'
-	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
-	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.1'
+    runtimeOnly 'org.postgresql:postgresql'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter-test:2.3.1'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'com.amazonaws.secretsmanager:aws-secretsmanager-jdbc:1.0.12'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.0'
+    implementation 'org.json:json:20220924'
+    implementation 'com.amazonaws:aws-encryption-sdk-java:2.3.3'
+    implementation 'com.amazonaws:aws-java-sdk-kms:1.12.408'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-batch', version: '2.4.4'
+    testImplementation group: 'org.springframework.batch', name: 'spring-batch-test', version: '4.2.6.RELEASE'
 
-	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.3.0'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
 
-	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
-
-	// postgresql
-	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
-	implementation 'org.postgresql:postgresql:42.5.4'
+    // postgresql
+    implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+    implementation 'org.postgresql:postgresql:42.5.4'
 }
 
 tasks.named('test') {
-	useJUnitPlatform()
+    useJUnitPlatform()
 }

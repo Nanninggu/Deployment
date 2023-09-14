@@ -1,8 +1,8 @@
-package com.kal.opc.mapper;
+package com.test.mapper;
 
-import com.kal.opc.dto.RoleDto;
-import com.kal.opc.dto.TestDto;
-import com.kal.opc.dto.UserDto;
+import com.test.dto.RoleDto;
+import com.test.dto.TestDto;
+import com.test.dto.UserDto;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 

@@ -1,6 +1,6 @@
-package com.kal.opc.mapper;
+package com.test.mapper;
 
-import com.kal.opc.dto.RoleDto;
+import com.test.dto.RoleDto;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -8,9 +8,4 @@ import java.util.List;
 public interface RoleMapper {
     List<RoleDto> adminRole(String staff_email) throws Exception;
 
-    int updateRole(String staff_email, String staff_kor_name, String staff_eng_name, String department_id, String default_role_name, String database) throws Exception;
-
-    int deleteRole(String staff_email, String role_name, String database) throws Exception;
-
-    int insertrole(String staff_email, String role_name, String database) throws Exception;
 }

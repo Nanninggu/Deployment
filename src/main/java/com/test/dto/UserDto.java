@@ -1,4 +1,4 @@
-package com.kal.opc.dto;
+package com.test.dto;
 
 public class UserDto {
 

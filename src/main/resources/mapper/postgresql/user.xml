@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dev.example.devdemo.mapper.TestMapper">
+<mapper namespace="com.test.mapper.TestMapper">
 
-    <select id="check_value" resultType="com.dev.example.devdemo.dto.UserDto" fetchSize="250">
+    <select id="check_value" resultType="com.test.dto.UserDto" fetchSize="250">
         SELECT
         staff_email,
         staff_kor_name,
@@ -15,7 +15,7 @@
         ORDER BY staff_kor_name
     </select>
 
-    <select id="Check_staff_email" resultType="com.dev.example.devdemo.dto.UserDto" fetchSize="250">
+    <select id="Check_staff_email" resultType="com.test.dto.UserDto" fetchSize="250">
         SELECT
         staff_email,
         staff_kor_name,
@@ -28,7 +28,7 @@
         ORDER BY staff_kor_name
     </select>
 
-    <select id="Check_others" resultType="com.dev.example.devdemo.dto.UserDto" fetchSize="250">
+    <select id="Check_others" resultType="com.test.dto.UserDto" fetchSize="250">
         SELECT
         staff_email,
         staff_kor_name,

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mapper.ScheduleMapper">
+
+    <select id="getScheduleValue" resultType="com.test.dto.ScheduleDto" fetchSize="250">
+        SELECT name, location, initial
+        FROM public.base_data
+    </select>
+
+    <insert id="insertValue" >
+        INSERT INTO public.base_data(
+        name, location, initial)
+        VALUES ('김승현', '서울', '짱구');
+    </insert>
+
+</mapper>

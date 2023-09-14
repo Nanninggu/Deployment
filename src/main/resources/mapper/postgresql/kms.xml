@@ -10,9 +10,14 @@
     </select>
 
     <insert id="encrypt_email" parameterType="com.test.dto.RoleDto">
-        INSERT INTO public.kms_test(
-        staff_email)
-        VALUES (#{staff_email});
+        INSERT INTO public.kms_test(staff_email, name)
+        VALUES (#{result_encrypt}, #{name})
     </insert>
+
+    <select id="get_encrypt_value" resultType="String" fetchSize="250">
+        SELECT staff_email
+        FROM public.kms_test
+        WHERE NAME = #{name}
+    </select>
 
 </mapper>

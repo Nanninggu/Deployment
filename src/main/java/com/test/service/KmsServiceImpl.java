@@ -18,7 +18,7 @@ import java.nio.charset.StandardCharsets;
 
 @Slf4j
 @Service
-public class KmsServiceEnv {
+public class KmsServiceImpl {
     @Value("${aws.kms.keyId}")
     private String KEY_ID;
 

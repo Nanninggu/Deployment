@@ -1,3 +1,6 @@
+mybatis:
+  type-handlers-package: com.test.kms.AESStringTypeHandler
+
 spring:
   mvc:
     view:
@@ -8,18 +11,24 @@ spring:
   datasource:
     #    url: jdbc:postgresql://127.0.0.1:5432/test_02
     #   writer
-    url: jdbc:postgresql://ke-test-db-dev.cluster-cwt0xlqwsn2i.ap-northeast-2.rds.amazonaws.com/ke_dev
+#    url: jdbc-secretsmanager:postgresql://awsdc-rds-flt-dev-oc-pri.ceowunjax3dw.ap-northeast-2.rds.amazonaws.com:5957/ocdevdb
     #   reader
-    #    url: jdbc:postgresql://ke-test-db-dev.cluster-ro-cwt0xlqwsn2i.ap-northeast-2.rds.amazonaws.com/ke_dev
-    driver-class-name: org.postgresql.Driver
-    username: postgres
-    password: test1234
+    url: jdbc-secretsmanager:postgresql://ke-test-db-dev.cluster-ro-cwt0xlqwsn2i.ap-northeast-2.rds.amazonaws.com/ke_dev
+    driver-class-name: com.amazonaws.secretsmanager.sql.AWSSecretsManagerPostgreSQLDriver
+    username: arn:aws:secretsmanager:ap-northeast-2:273563728071:secret:prod/AppDev/Postgresql-PEu1We
+    password: arn:aws:secretsmanager:ap-northeast-2:273563728071:secret:prod/AppDev/Postgresql-PEu1We
   #JSP 바로적용 설정
   devtools:
     livereload:
       enabled: true
-#로그 레벨
-logging:
-  level:
-    # 쿼리 보기
-    com.penthegom.example.penthegomdemo: DEBUG
+
+aws:
+  secretsmanager:
+    name: prod/AppDev/Postgresql
+  kms:
+    keyId: "8dce5d89-41df-4ac5-8894-5f8c758ca821"
+    encryptionAlgorithm: "RSAES_OAEP_SHA_256"
+cloud:
+  aws:
+    region:
+      static: ap-northeast-2

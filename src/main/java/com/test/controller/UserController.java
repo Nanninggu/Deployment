@@ -1,16 +1,17 @@
-package com.kal.opc.controller;
+package com.test.controller;
 
-import com.kal.opc.dto.UserDto;
-import com.kal.opc.service.UserService;
+import com.test.dto.UserDto;
+import com.test.service.UserService;
 import jdk.jfr.Description;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Controller
+@RestController
 public class UserController {
 
     @Autowired

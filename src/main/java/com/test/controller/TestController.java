@@ -1,22 +1,24 @@
-package com.kal.opc.controller;
+package com.test.controller;
 
-import com.kal.opc.dto.TestDto;
-import com.kal.opc.dto.UserDto;
-import com.kal.opc.service.TestService;
+import com.test.dto.BatchDto;
+import com.test.dto.UserDto;
+import com.test.service.BatchService;
+import com.test.service.TestService;
+import com.test.dto.TestDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 public class TestController {
 
     @Autowired
     TestService testService;
+
+    @Autowired
+    BatchService batchService;
 
     @RequestMapping("/")
     public String index() {
@@ -63,5 +65,12 @@ public class TestController {
     int create_user(String staff_email, String staff_kor_name, String staff_eng_name, String department_id, String default_role_name) throws Exception {
 
         return testService.create_user(staff_email, staff_kor_name, staff_eng_name, department_id, default_role_name);
+    }
+
+    @RequestMapping("/verification")
+    public @ResponseBody
+    List<BatchDto> value_check() throws Exception {
+
+        return batchService.getValues();
     }
 }

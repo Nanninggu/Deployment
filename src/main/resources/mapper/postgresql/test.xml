@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.dev.example.devdemo.mapper.TestMapper">
+<mapper namespace="com.test.mapper.TestMapper">
 
-    <select id="getAll" resultType="com.dev.example.devdemo.dto.UserDto">
+    <select id="getAll" resultType="com.test.dto.UserDto">
         select * from "oc.user_information_t"
     </select>
 
-    <select id="user_info" resultType="com.dev.example.devdemo.dto.UserDto">
+    <select id="user_info" resultType="com.test.dto.UserDto">
         SELECT
         staff_email,
         staff_kor_name,
@@ -17,13 +17,13 @@
         ORDER BY staff_kor_name
     </select>
 
-    <select id="role_info" resultType="com.dev.example.devdemo.dto.RoleDto">
+    <select id="role_info" resultType="com.test.dto.RoleDto">
         SELECT DISTINCT role_name
         FROM "oc.role_permission_t"
         ORDER BY role_name
     </select>
 
-    <select id="role_detail" resultType="com.dev.example.devdemo.dto.RoleDto">
+    <select id="role_detail" resultType="com.test.dto.RoleDto">
         SELECT role_name
         FROM "oc.user_role_t"
         WHERE staff_email = #{staff_email}

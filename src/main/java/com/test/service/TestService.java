@@ -1,8 +1,8 @@
-package com.kal.opc.service;
+package com.test.service;
 
-import com.kal.opc.dto.TestDto;
-import com.kal.opc.dto.UserDto;
-import com.kal.opc.mapper.TestMapper;
+import com.test.dto.TestDto;
+import com.test.dto.UserDto;
+import com.test.mapper.TestMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
