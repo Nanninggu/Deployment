@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mapper.KmsMapper">
+
+    <select id="adminRoleKms" resultType="com.test.dto.RoleDto" fetchSize="250">
+        SELECT DISTINCT role_name, menu_id, read_yn, write_yn
+        FROM "oc.role_permission_t"
+        WHERE role_name = (SELECT role_name FROM "oc.user_role_t" WHERE staff_email = #{staff_email})
+        ORDER BY role_name
+    </select>
+
+    <insert id="encrypt_email" parameterType="com.test.dto.RoleDto">
+        INSERT INTO public.kms_test(
+        staff_email)
+        VALUES (#{staff_email});
+    </insert>
+
+</mapper>
